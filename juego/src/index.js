@@ -69,6 +69,7 @@ function Square(props) {
         history: history.concat([{
           squares: squares,
         }]),
+        stepNumber: history.length,
         xIsNext: !this.state.xIsNext,
       });
     }
@@ -83,9 +84,9 @@ function Square(props) {
     render() {
 
       const history = this.state.history;
-    const current = history[history.length - 1];
+    
     const winner = calculateWinner(current.squares);
-
+    const current = history[this.state.stepNumber];
     const moves = history.map((step, move) => {
       const desc = move ?
         'Go to move #' + move :
